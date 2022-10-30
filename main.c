@@ -20,7 +20,8 @@ void main(void) {
     // setup pin for output (connected to LED)
     LATHbits.LATH3=0;   //set LED initial output to 0 (OFF)
     TRISHbits.TRISH3=0; //set LED to output
-    while (1) {
-
+    
+    while (1) {   
+        Sleep();
     }
 }
