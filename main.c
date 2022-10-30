@@ -6,22 +6,19 @@
 #pragma config WDTE = OFF        // WDT operating mode (WDT enabled regardless of sleep)
 
 #include <xc.h>
-//#include "LEDarray.h"
-#include "interrupts.h"
-#include "comparator.h"
+#include "LEDarray.h"
+//#include "interrupts.h"
+//#include "comparator.h"
+#include "timers.h"
 
 #define _XTAL_FREQ 64000000 //note intrinsic _delay function is 62.5ns at 64,000,000Hz  
 
 
 void main(void) {
-	//call comparator and interrupts initialisation functions to set up the hardware modules
-    Comp1_init(); 
-    Interrupts_init(); 
-    // setup pin for output (connected to LED)
-    LATHbits.LATH3=0;   //set LED initial output to 0 (OFF)
-    TRISHbits.TRISH3=0; //set LED to output
-    
-    while (1) {   
-        Sleep();
+	//call timer and LED initialisation functions to set up the  modules
+    Timer0_init();
+    LEDarray_init();
+    while (1) {
+        LEDarray_disp_bin(TMR0L); //use the LED to display the timer
     }
 }
