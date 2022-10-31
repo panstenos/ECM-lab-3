@@ -23,6 +23,6 @@ void Timer0_init(void)
 ************************************/
 unsigned int get16bitTMR0val(void)
 {
-	return TMR0L | (TMR0H << 8); //return the 8 MSB
+	return TMR0L | (TMR0H << 8); //use bitwise operator to combine the H and L bits
 
 }
