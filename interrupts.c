@@ -23,7 +23,7 @@ void __interrupt(high_priority) HighISR()
         LATHbits.LATH3 = !LATHbits.LATH3; //toggle the LED
         // set the timer to reset at 3036 every time the it overflows
         TMR0H=0b00001011;            
-        TMR0L=0b11011011;
+        TMR0L=0b11011100;
         PIR0bits.TMR0IF = 0; // turn flag off
 	}
 }
