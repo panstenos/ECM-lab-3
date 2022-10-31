@@ -13,7 +13,7 @@ void Timer0_init(void)
     
     // initialise the time registers to 3036 for the LED to toggle every second
     TMR0H=0b00001011;            
-    TMR0L=0b11011011;
+    TMR0L=0b11011100;
     T0CON0bits.T0EN=1;	//start the timer
 }
 
