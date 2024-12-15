@@ -8,15 +8,23 @@
 #include <xc.h>
 #include "LEDarray.h"
 #include "interrupts.h"
-#include "comparator.h"
+//#include "comparator.h"
+#include "timers.h"
 
 #define _XTAL_FREQ 64000000 //note intrinsic _delay function is 62.5ns at 64,000,000Hz  
-
+#include <stdio.h>
 
 void main(void) {
-	//call your initialisation functions to set up the hardware modules
-
+	//call LED, timer and interrupts initialisation functions to set up the hardware modules and the timer
+    LEDarray_init();    
+    Timer0_init();
+    //Comp1_init();
+    Interrupts_init();
+    
+    // set up the LED light at RH3 to indicate the interrupts
+    LATHbits.LATH3 = 0;
+    TRISHbits.TRISH3 = 0;
     while (1) {
-		
+        LEDarray_disp_bin(get16bitTMR0val() >> 8); //use the LED to display the timer
     }
 }
